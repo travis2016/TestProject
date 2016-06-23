@@ -1,0 +1,69 @@
+@CHARSET "UTF-8";
+
+
+/*用于main.jsp*/
+#maintop{
+	width: 100%;
+}
+
+
+/*
+用户主页面的css
+*/
+
+a,ul,li,i{
+	color:#337ab7;
+}
+
+/*
+顶部样式
+*/
+.navbar-top-links{
+	margin-right:0;
+}
+
+.dropdown{
+	margin-right:15px;
+}
+
+
+/*
+左侧导航栏样式
+*/
+.sidebar{
+	z-index:1;
+	position:absolute;
+	width:250px;
+	margin-top:51px;
+}
+
+.sidebar .sidebar-search {
+    padding: 15px;
+}
+
+.sidebar ul li {
+    border-bottom: 1px solid #e7e7e7;
+}
+
+.sidebar .nav-second-level li a{
+	padding-left:37px;
+}
+
+
+/*
+页面规范
+*/
+.pageNorm{
+	min-height: 343px;
+}
+
+/*如果页面宽度大于 300*/
+@media(min-width:768px) {
+#page-wrapper {
+        position: inherit;
+        margin: 0 0 0 250px;
+        padding: 0 30px;
+        border-left: 1px solid #e7e7e7;
+    }
+}
+
