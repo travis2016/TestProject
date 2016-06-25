@@ -82,4 +82,4 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 <div align="left">
 <input type="button" class="btn btn-primary" id="regAction__execute" name="method:execute" value="注册" onclick="if(check()==true && checkUserExit()==true){register();};" />
 <input type="button" class="btn btn-primary" id="regAction__login" name="method:login" value="登录" onclick="if(check()==true){login();}"  />
-</div>tt111155552366 -->
+</div> -->
