@@ -65,10 +65,13 @@ String uname=(String)request.getSession().getAttribute("loginusername");
                             <a href="#"><i class="fa fa-bar-chart-o fa-fw"></i> 用户管理<span class="fa arrow"></span></a>
                             <ul class="nav nav-second-level">
                                 <li>
-                                    <a href="flot.html">权限分配</a>
+                                    <a href="flot.html">用户信息页</a>
                                 </li>
                                 <li>
-                                    <a href="morris.html">权限设置</a>
+                                    <a href="morris.html">权限分配页</a>
+                                </li>
+                                <li>
+                                    <a href="morris.html">操作日志查看页</a>
                                 </li>
                             </ul>
                             <!-- /.nav-second-level -->
