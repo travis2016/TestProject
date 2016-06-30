@@ -13,6 +13,10 @@ String uname=(String)request.getSession().getAttribute("loginusername");
 <title>用户信息页</title>
 </head>
 <body>
-
+ 	<div class="row">
+      <div class="col-lg-12">
+         <h1 class="page-header">用户表</h1>
+      </div>
+    </div> 
 </body>
 </html>

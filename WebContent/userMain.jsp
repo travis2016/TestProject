@@ -24,9 +24,7 @@ String uname=(String)request.getSession().getAttribute("loginusername");
       <script type="text/javascript" src="js/mainJs/main.js"></script> 
 </head>
 <body>
-	<jsp:include page="/page/Main.jsp"></jsp:include>
-	<%-- <font>欢迎用户：	<%=uname %> --%>
-	
-  </font>
+	 <jsp:include page="/page/Main.jsp"></jsp:include>
+	 
 </body>
 </html>
