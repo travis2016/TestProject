@@ -81,8 +81,8 @@ String uname=(String)request.getSession().getAttribute("loginusername");
 	        </div>    
         </nav>
         
-         <div id="page-wrapper" class="pageNorm" >
-         	<iframe class="pageframe" name="content" src="<%=basePath %>page/userManager/userinfo.jsp" style="100%;" />
+         <div id="page-wrapper" class="pageNorm" name="content">
+         	<iframe class="pageframe" id="pageIframe" name="content" src="<%=basePath %>page/userManager/userinfo.jsp" />
          </div>
 	</div>
 	

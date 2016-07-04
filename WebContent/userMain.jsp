@@ -22,6 +22,11 @@ String uname=(String)request.getSession().getAttribute("loginusername");
       <script  src="js/bootstrap.min.js"></script>
       <script type="text/javascript" src="js/metisMenu/metisMenu.min.js"></script> 
       <script type="text/javascript" src="js/mainJs/main.js"></script> 
+     <!--  <script type="text/javascript">
+      	$(document).ready(function(){ 
+				document.getElementById("pageIframe").scrolling="hidden";
+			});
+	  </script> -->
 </head>
 <body>
 	 <jsp:include page="/page/Main.jsp"></jsp:include>
