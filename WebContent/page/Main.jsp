@@ -65,10 +65,10 @@ String uname=(String)request.getSession().getAttribute("loginusername");
                             <a href="#"><i class="fa fa-bar-chart-o fa-fw"></i> 用户管理<span class="fa arrow"></span></a>
                             <ul class="nav nav-second-level">
                                 <li>
-                                    <a href="<%=basePath %>page/userManager/userinfo.jsp" target="content">用户信息页</a>
+                                    <a href="#" id="useLink1">用户信息页</a>
                                 </li>
                                 <li>
-                                    <a href="morris.html">权限分配页</a>
+                                    <a href="#" id="useLink2">权限分配页</a>
                                 </li>
                                 <li>
                                     <a href="morris.html">操作日志查看页</a>
@@ -82,7 +82,7 @@ String uname=(String)request.getSession().getAttribute("loginusername");
         </nav>
         
          <div id="page-wrapper" class="pageNorm" name="content">
-         	<iframe class="pageframe" id="pageIframe" name="content" src="<%=basePath %>page/userManager/userinfo.jsp" />
+         	<%-- <iframe class="pageframe" id="pageIframe" name="content" src="<%=basePath %>page/userManager/userinfo.jsp" /> --%>
          </div>
 	</div>
 	
