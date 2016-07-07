@@ -92,6 +92,18 @@ public class UserDaoImpl  implements UserDao{
         return false;
 	}
 	
+	@Override
+	/**
+	 * 判断用户是否登录成功
+	 */
+	public List<UserBean> selectUser(){
+		Session sess = sessionFactory.openSession();
+		String sql="select * from userinfo";
+		SQLQuery query = sess.createSQLQuery(sql);
+        List user = query.list(); 
+        return user;
+	}
+	
 	public String SearchNickname(String userName){
 		Session sess = sessionFactory.openSession();
         Transaction tx = sess.beginTransaction();

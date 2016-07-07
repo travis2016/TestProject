@@ -1,5 +1,7 @@
 package com.szc.users.service.Impl;
 
+import java.util.List;
+
 import org.springframework.stereotype.Service;
 
 import com.szc.users.beans.UserBean;
@@ -42,6 +44,11 @@ public class UserServiceImpl implements UserService {
 	}
 	public void setUsersdao(UserDaoImpl usersdao) {
 		this.usersdao = usersdao;
+	}
+
+	@Override
+	public List<UserBean> searchUser() {
+		return usersdao.selectUser();
 	}
 
 	

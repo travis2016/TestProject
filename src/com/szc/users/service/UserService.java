@@ -1,5 +1,7 @@
 package com.szc.users.service;
 
+import java.util.List;
+
 import com.szc.users.beans.UserBean;
 
 /**
@@ -38,4 +40,9 @@ public interface UserService {
      * @return
      */
     public String searchUserNickname(String userName);
+    
+    /**
+     * 用于搜索用户
+     */
+    public List<UserBean> searchUser();
 }
