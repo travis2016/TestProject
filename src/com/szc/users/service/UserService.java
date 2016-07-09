@@ -44,5 +44,5 @@ public interface UserService {
     /**
      * 用于搜索用户
      */
-    public List<UserBean> searchUser();
+    public List searchUser();
 }

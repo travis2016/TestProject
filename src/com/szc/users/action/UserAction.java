@@ -1,21 +1,17 @@
 package com.szc.users.action;
 
-import java.io.PrintWriter;
 import java.util.List;
 
 import javax.servlet.ServletContext;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
-import org.apache.commons.io.IOUtils;
+import net.sf.json.JSONArray;
+
 import org.apache.struts2.ServletActionContext;
 import org.apache.struts2.convention.annotation.Action;
-import org.json.JSONObject;
-import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.context.WebApplicationContext;
 import org.springframework.web.context.support.WebApplicationContextUtils;
-
-import sun.util.logging.resources.logging;
 
 import com.opensymphony.xwork2.ActionSupport;
 import com.szc.users.beans.UserBean;
@@ -51,7 +47,13 @@ public class UserAction  extends ActionSupport {
 		System.out.println("here");
 		UserBean selectUser=new UserBean();
 		UserService server = ctx.getBean("services",com.szc.users.service.Impl.UserServiceImpl.class);
-    	List<UserBean> userList=server.searchUser();
-    	LOG.info(userList.get(0).getNickname());
+    	List userList=server.searchUser();
+    	Object[] user1=(Object[])userList.get(0);
+    	JSONArray selectResult = JSONArray.fromObject(userList);
+    	int userid=(Integer)user1[0];
+    	String userName=(String)user1[1];
+    	System.out.println(userid);
+    	System.out.println(userName);
+    	System.out.println(selectResult.toString());
 	}
 }

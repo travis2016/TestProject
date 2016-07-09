@@ -47,7 +47,7 @@ public class UserServiceImpl implements UserService {
 	}
 
 	@Override
-	public List<UserBean> searchUser() {
+	public List searchUser() {
 		return usersdao.selectUser();
 	}
 

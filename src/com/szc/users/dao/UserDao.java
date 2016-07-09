@@ -40,7 +40,7 @@ public interface UserDao {
 	/**
 	 * 直接按id搜索全部用户
 	 */
-	public List<UserBean> selectUser();
+	public List selectUser();
 	
 	/**
 	 * 

@@ -6,6 +6,7 @@ import org.hibernate.SQLQuery;
 import org.hibernate.Session;
 import org.hibernate.SessionFactory;
 import org.hibernate.Transaction;
+import org.hibernate.engine.query.spi.sql.NativeSQLQueryReturn;
 import org.springframework.stereotype.Repository;
 
 import com.szc.users.beans.UserBean;
@@ -49,6 +50,7 @@ public class UserDaoImpl  implements UserDao{
         SQLQuery query = sess.createSQLQuery(sql);
         query.setParameter(0,userName);
         List user = query.list();  
+        sess.close();
         if(user.size()>0){  
             try {  
             	sess.close();  
@@ -76,7 +78,8 @@ public class UserDaoImpl  implements UserDao{
         SQLQuery query = sess.createSQLQuery(sql);
         query.setParameter(0,userName);
         query.setParameter(1,Password);
-        List user = query.list();  
+        List user = query.list(); 
+        sess.close();
         if(user.size()>0){  
             try {  
             	sess.close();  
@@ -94,14 +97,15 @@ public class UserDaoImpl  implements UserDao{
 	
 	@Override
 	/**
-	 * 判断用户是否登录成功
+	 * 查询用户列表
 	 */
-	public List<UserBean> selectUser(){
+	public List selectUser(){
 		Session sess = sessionFactory.openSession();
 		String sql="select * from userinfo";
 		SQLQuery query = sess.createSQLQuery(sql);
-        List user = query.list(); 
-        return user;
+        List userlist = query.list(); 
+        sess.close();
+        return userlist;
 	}
 	
 	public String SearchNickname(String userName){
@@ -111,6 +115,7 @@ public class UserDaoImpl  implements UserDao{
         SQLQuery query = sess.createSQLQuery(sql);
         query.setParameter(0,userName);
         List user = query.list(); 
+        sess.close();
         String nickname="";
         if(user.size()>0){  
             try {  
