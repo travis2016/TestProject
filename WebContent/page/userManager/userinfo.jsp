@@ -1,6 +1,6 @@
 <%@ page language="java" import="java.util.*" contentType="text/html; charset=UTF-8"  pageEncoding="UTF-8"%>
 <%@ page import="java.uti1.*" %>
-<%@ taglib prefix="logins" uri="/struts-tags"%>
+<%@ taglib prefix="users" uri="/struts-tags"%>
 <%
 String path = request.getContextPath();
 String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.getServerPort()+path+"/";
@@ -10,8 +10,9 @@ String uname=(String)request.getSession().getAttribute("loginusername");
 <html>
 <head>
 <title>用户信息页</title>
+<script type="text/javascript" src="js/mainJs/data.js"></script>
 </head>
-<body>
+<body onload="lodaUserData()">
  	<div class="row">
       <div class="col-lg-12">
          <br><h1 class="page-header" style="text-align:left;">用户表</h1>
