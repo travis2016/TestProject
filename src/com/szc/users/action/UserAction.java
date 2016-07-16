@@ -77,7 +77,7 @@ public class UserAction  extends ActionSupport {
 	    		dataJsonArray.add(i, dataJsonObject);
 	    	}
 	    	resultJson.element("data", dataJsonArray);
-	    	LOG.info("返回json数据了");
+	    	LOG.info("返回json数据了============Test");
 	    	out.print(resultJson);
 	    	out.flush();
 	    	out.close();
