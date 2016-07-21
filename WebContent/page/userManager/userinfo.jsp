@@ -10,7 +10,8 @@ String uname=(String)request.getSession().getAttribute("loginusername");
 <html>
 <head>
 <title>用户信息页</title>
-<script type="text/javascript" src="js/mainJs/data.js"></script>
+<script type="text/javascript" src="../../js/mainJs/data.js"></script>
+<link rel="stylesheet" href="../../css/bootstrap.min.css">
 </head>
 <body onload="lodaUserData()">
  	<div class="row">
