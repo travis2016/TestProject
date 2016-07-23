@@ -21,9 +21,9 @@ String uname=(String)request.getSession().getAttribute("loginusername");
       <div class="col-lg-12">
          <br><h1 class="page-header" style="text-align:left;">用户表</h1>
       </div>
-    <table data-toggle="table" class="table table-bordered" data-url="data1.json">
+    <table data-toggle="table" class="table table-bordered">
 	   	<thead>
-    	    <tr>
+    	    <tr id="menus">
 	            <th data-field="userNames">用户名</th>
 	            <th data-field="useSex">用户性别</th>
 	            <th data-field="userNickname">用户显示名称</th>
@@ -31,6 +31,15 @@ String uname=(String)request.getSession().getAttribute("loginusername");
 	            <th data-field="userActons">用户操作</th>
 	        </tr>
     	</thead>
+    	<tbody>
+    		<tr id="dataString">
+    			<td></td>
+    			<td></td>
+    			<td></td>
+    			<td></td>
+    			<td></td>
+    		</tr>
+    	</tbody>
 	</table>
     </div> 
 </body>
