@@ -2,7 +2,6 @@
  *获取用户数据 
  */
 function lodaUserData(){
-	alert("111");
 	var url = window.location.href+"/selectAction";
 	$.ajax( {
 		type : "get",
@@ -11,6 +10,7 @@ function lodaUserData(){
 		success : function(data) {
 			//data为后台返回的Json信息
 			if(data && data.status == "1"){
+				
 				alert(data.data);
 			}else if(data.status == 0 && data.error_code.equal('20001')){
 				//20001：参数格式错误

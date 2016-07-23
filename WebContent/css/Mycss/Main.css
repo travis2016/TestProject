@@ -53,10 +53,10 @@ a,ul,li,i{
 
 /*
 页面规范
-*/
 .pageNorm .pageframe{
 	min-height: 343px;
 }
+*/
 
 /*如果页面宽度大于 300*/
 @media(min-width:768px) {

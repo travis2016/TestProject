@@ -3,17 +3,28 @@ $(function() {
     $('#side-menu').metisMenu();
 });
 
-$(document).ready(function(){ 
-	//点击用户管理菜单的用户信息页
-	/*$("#useLink1").click(function () { 
-	$("#page-wrapper").load("page/userManager/userinfo.jsp"); 
-	return false;  //阻止标签跳转
-	});*/
-	
-	$("#useLink2").click(function () { 
-		$("#page-wrapper").load("page/userManager/PermissionAssignment.jsp");
-		return false;
-		}); 
-}); 
-
-
+//iframe自适应开始
+function reinitIframe(){  
+	var iframe = document.getElementById("pageIframe");  
+	try{  
+	    var bHeight = iframe.contentWindow.document.body.scrollHeight;  
+	    var dHeight = iframe.contentWindow.document.documentElement.scrollHeight;  
+	    var height = Math.max(bHeight, dHeight);  
+	    iframe.height = height;  
+	}catch (ex){}  
+}  
+	  
+	var timer1 = window.setInterval("reinitIframe()", 500); //定时开始  
+	  
+	function reinitIframeEND(){  
+	var iframe = document.getElementById("pageIframe");  
+	try{  
+	    var bHeight = iframe.contentWindow.document.body.scrollHeight;  
+	    var dHeight = iframe.contentWindow.document.documentElement.scrollHeight;  
+	    var height = Math.max(bHeight, dHeight);  
+	    iframe.height = height;  
+	}catch (ex){}  
+	// 停止定时  
+	window.clearInterval(timer1);  
+}  
+//iframe自适应结束
