@@ -62,3 +62,8 @@ function lodaUserData(){
 	     } 
 	})
 }
+
+//delete userData
+function deleteUser(){
+	
+}
