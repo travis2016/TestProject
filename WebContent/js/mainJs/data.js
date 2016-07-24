@@ -20,16 +20,28 @@ function lodaUserData(){
                                     $(this).html(data.data[index].username);  
                                     break;  
                                  case(1):  
-                                    $(this).html(data.data[index].sex);  
+                                	 if(data.data[index].sex==0){
+                                		 $(this).html("男");
+                                	 }else{
+                                		 $(this).html("女");
+                                	 }
+                                    //$(this).html(data.data[index].sex);  
                                     break;  
                                 case(2):  
                                     $(this).html(data.data[index].usernickname);  
                                     break;  
-                                case(3):  
-                                    $(this).html(data.data[index].group);  
+                                case(3): 
+                                	if(data.data[index].group==1){
+                                		$(this).html("管理组");
+                                	}else if(data.data[index].group==2){
+                                		$(this).html("测试组");
+                                	}else if(data.data[index].group==3){
+                                		$(this).html("普通组");
+                                	}
+                                    //$(this).html(data.data[index].group);  
                                     break;  
                                 case(4):  
-                                    $(this).html("<a>修改</a>");  
+                                    $(this).html("<button type=\"button\" class=\"btn btn-success\">修改</button>&nbsp;&nbsp;&nbsp;<button type=\"button\" class=\"btn btn-success\" id = \"deleteUser\">删除</button>");  
                                     break;  
                
                           }
