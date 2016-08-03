@@ -13,6 +13,7 @@ import net.sf.json.JSONObject;
 
 import org.apache.struts2.ServletActionContext;
 import org.apache.struts2.convention.annotation.Action;
+import org.apache.struts2.convention.annotation.InterceptorRef;
 import org.springframework.web.context.WebApplicationContext;
 import org.springframework.web.context.support.WebApplicationContextUtils;
 
@@ -46,7 +47,8 @@ public class UserAction  extends ActionSupport {
   	
   	
 	
-	@Action(value = "/selectAction")//ajax的方法，返回的Type必须是json
+	@Action(value = "/selectAction",
+			interceptorRefs = {@InterceptorRef(value = "mydefault")})//ajax的方法，返回的Type必须是json
 	public void selectUser() {
 		try {
 			out= response.getWriter();
