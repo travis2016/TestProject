@@ -29,7 +29,7 @@ import com.szc.users.service.UserService;
  * UserAction负责处理用户表的一些操作
  */
 @Controller("UserAction")
-@ParentPackage(value = "struts-interceptor") 
+@ParentPackage(value="test") 
 public class UserAction  extends ActionSupport {
     
 	private static final long serialVersionUID = 1L;  
@@ -52,7 +52,7 @@ public class UserAction  extends ActionSupport {
   	
 	
 	@Action(value = "/selectAction"
-			,interceptorRefs= {@InterceptorRef(value="authority"),@InterceptorRef(value="defaultStack")}) 	//ajax的方法，返回的Type必须是json
+			,interceptorRefs= {@InterceptorRef(value="checkLoginStack"),@InterceptorRef(value="defaultStack")}) 	//ajax的方法，返回的Type必须是json
 	public void selectUser() {
 		try {
 			out= response.getWriter();
