@@ -14,6 +14,8 @@ import net.sf.json.JSONObject;
 import org.apache.struts2.ServletActionContext;
 import org.apache.struts2.convention.annotation.Action;
 import org.apache.struts2.convention.annotation.InterceptorRef;
+import org.apache.struts2.convention.annotation.ParentPackage;
+import org.springframework.stereotype.Controller;
 import org.springframework.web.context.WebApplicationContext;
 import org.springframework.web.context.support.WebApplicationContextUtils;
 
@@ -26,6 +28,8 @@ import com.szc.users.service.UserService;
  * @author TravisSong
  * UserAction负责处理用户表的一些操作
  */
+@Controller("UserAction")
+@ParentPackage(value = "struts-interceptor") 
 public class UserAction  extends ActionSupport {
     
 	private static final long serialVersionUID = 1L;  
@@ -47,8 +51,8 @@ public class UserAction  extends ActionSupport {
   	
   	
 	
-	@Action(value = "/selectAction",
-			interceptorRefs = {@InterceptorRef(value = "mydefault")})//ajax的方法，返回的Type必须是json
+	@Action(value = "/selectAction"
+			,interceptorRefs= {@InterceptorRef(value="authority"),@InterceptorRef(value="defaultStack")}) 	//ajax的方法，返回的Type必须是json
 	public void selectUser() {
 		try {
 			out= response.getWriter();

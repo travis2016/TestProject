@@ -4,21 +4,26 @@
     "http://struts.apache.org/dtds/struts-2.0.dtd">
     
 <struts>  
-
-	<package name="custom-default" extends="struts-default">    
- 		<!-- 定义一个拦截器 -->    
+  	<constant name="struts.i18n.encoding" value="UTF-8" />
+	<constant name="struts.serve.static.browserCache" value="false" />  
+	<constant name="struts.convention.action.suffix" value="Controller"/>
+	<constant name="struts.convention.action.mapAllMatches" value="true"/>
+	
+	
+	<package  name="crud-default" extends="convention-default">
+ 		<!-- 将拦截器在全局包中定义，在需要用到的包中指明引用 -->    
         <interceptors>    
             <interceptor name="authority"    
                 class="com.szc.interceptor.AuthInterceptor">    
             </interceptor>    
               <!-- 拦截器栈 -->    
-            <interceptor-stack name="mydefault">    
-                <interceptor-ref name="authority" />    
-                <interceptor-ref name="defaultStack" />    
+            <interceptor-stack name="checkLoginStack">    
+                <interceptor-ref name="authority"/>    
+                <interceptor-ref name="defaultStack"/>    
             </interceptor-stack>    
         </interceptors>    
-      </package>
-
-  	<constant name="struts.i18n.encoding" value="UTF-8" />
-	<constant name="struts.serve.static.browserCache" value="false" />  
+	</package>
+	
+	 <package name="struts-interceptor" extends="crud-default"></package>
+	
 </struts> 

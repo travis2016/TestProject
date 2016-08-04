@@ -8,16 +8,15 @@
  	<filter>
         <filter-name>struts2</filter-name>
         <filter-class>org.apache.struts2.dispatcher.ng.filter.StrutsPrepareAndExecuteFilter</filter-class>
-        <init-param>    
+        <!-- <init-param>    
             <param-name>actionPackages</param-name>    
-            <param-value>com.szc.users.*</param-value>    
-       </init-param> 
-         <!-- 
-             使用struts.xml时的配置，注解后，基本可以去掉
+            <param-value>com.szc.*</param-value>    
+       </init-param>  -->
+         <!-- 使用struts.xml时的配置，注解后，基本可以去掉 -->
            <init-param>
         	<param-name>config</param-name>
-        	<param-value>struts-default.xml,com/szc/resources/struts.xml</param-value>
-        </init-param> -->
+        	<param-value>struts-default.xml,struts-plugin.xml,/WEB-INF/classes/com/szc/resources/struts.xml</param-value>
+        </init-param> 
     </filter>
     
  	<!--  添加对spring的支持 -->

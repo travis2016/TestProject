@@ -33,7 +33,7 @@
         <!-- 包扫描的方式加载注解类(推荐) -->  
         <property name="packagesToScan">  
             <list>  
-                <value>com.szc.users*</value>  
+                <value>com.szc.users.*</value>
             </list>  
         </property>  
     </bean>
