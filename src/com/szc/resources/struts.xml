@@ -7,14 +7,13 @@
   	<constant name="struts.i18n.encoding" value="UTF-8" />
 	<constant name="struts.serve.static.browserCache" value="false" />  
 	
-	<package  name="test" extends="struts-default">
+	<package  name="test">
  		<!-- 将拦截器在全局包中定义，在需要用到的包中指明引用 -->    
         <interceptors>    
             <interceptor name="authority" class="com.szc.interceptor.AuthInterceptor"/>    
               <!-- 拦截器栈 -->    
             <interceptor-stack name="checkLoginStack">    
                 <interceptor-ref name="authority"/>    
-                <interceptor-ref name="defaultStack"/>    
             </interceptor-stack>    
         </interceptors>    
         <default-interceptor-ref name="checkLoginStack"/>

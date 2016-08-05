@@ -52,7 +52,7 @@ public class UserAction  extends ActionSupport {
   	
 	
 	@Action(value = "/selectAction"
-			,interceptorRefs= {@InterceptorRef(value="checkLoginStack"),@InterceptorRef(value="defaultStack")}) 	//ajax的方法，返回的Type必须是json
+			,interceptorRefs= {@InterceptorRef(value="checkLoginStack")}) 	//ajax的方法，返回的Type必须是json
 	public void selectUser() {
 		try {
 			out= response.getWriter();
