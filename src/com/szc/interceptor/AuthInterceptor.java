@@ -20,21 +20,27 @@ public class AuthInterceptor implements Interceptor{
 	@Override
 	public String intercept(ActionInvocation invocation) throws Exception {
 		String result = "";  
-        ActionContext ctx = invocation.getInvocationContext();    
+        ActionContext ctx = invocation.getInvocationContext();
+        //获取拦截的Action名称
+        String invocationAction=invocation.getAction().getClass().getName();
+        String invocationname= invocationAction.substring(invocationAction.lastIndexOf(".")+1,invocationAction.length());
+        System.out.println("invocationAction=="+invocationAction);
         Map session = ctx.getSession();
 		System.out.println("执行拦截器");
-		return null;
+		
+		if(invocationname=="RegisterAction" || invocationname=="LoginUserAction"){
+			result="true";
+		}
+		return "false";
 	}
 
 	@Override
 	public void destroy() {
-		// TODO Auto-generated method stub
 		
 	}
 
 	@Override
 	public void init() {
-		// TODO Auto-generated method stub
 		
 	}
 
