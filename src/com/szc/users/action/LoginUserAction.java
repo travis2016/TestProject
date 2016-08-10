@@ -12,6 +12,8 @@ import org.apache.struts2.convention.annotation.Action;
 import org.apache.struts2.convention.annotation.Result;
 import org.json.JSONObject;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.context.annotation.Scope;
+import org.springframework.stereotype.Controller;
 import org.springframework.web.context.WebApplicationContext;
 import org.springframework.web.context.support.WebApplicationContextUtils;
 
@@ -25,6 +27,8 @@ import com.szc.util.MD5Util;
  * @author TravisSong
  * 处理登录后的用户的Action(修改用户信息、管理员查询用户)
  */
+@Controller("LoginUserAction")
+@Scope("prototype")
 public class LoginUserAction extends ActionSupport {
 	private static final long serialVersionUID = 1L;
 	private UserService userService;  

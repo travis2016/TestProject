@@ -22,7 +22,7 @@
  	<!--  添加对spring的支持 -->
  	<context-param> 
 		<param-name>contextConfigLocation</param-name> 
-		<param-value>/WEB-INF/classes/com/szc/resources/applicationContext.xml</param-value> 
+		<param-value>/WEB-INF/classes/com/szc/resources/applicationContext*.xml</param-value> 
 	</context-param> 
 
     

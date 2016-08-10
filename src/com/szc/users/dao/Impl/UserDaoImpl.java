@@ -2,20 +2,35 @@ package com.szc.users.dao.Impl;
 
 import java.util.List;
 
+import javax.annotation.Resource;
+
 import org.hibernate.SQLQuery;
 import org.hibernate.Session;
 import org.hibernate.SessionFactory;
 import org.hibernate.Transaction;
-import org.hibernate.engine.query.spi.sql.NativeSQLQueryReturn;
 import org.springframework.stereotype.Repository;
 
 import com.szc.users.beans.UserBean;
 import com.szc.users.dao.UserDao;
 
 @Repository("usersdao")
-public class UserDaoImpl  implements UserDao{
-	 private  SessionFactory sessionFactory = null;
-	 	
+public class UserDaoImpl implements UserDao{
+	
+	@Resource(name="sessionFactory")
+	 private  SessionFactory sessionFactory;
+	 
+	 public SessionFactory getSessionFactory() {
+	        return sessionFactory;
+		}
+
+	public void setSessionFactory(SessionFactory sessionFactory) {
+        this.sessionFactory = sessionFactory;
+	}
+	 
+	
+	public Session getSession(){
+		return sessionFactory.openSession();
+	}
 	
 	@Override
 	/**
@@ -43,8 +58,8 @@ public class UserDaoImpl  implements UserDao{
 	 * 判断用户是否存在
 	 */
 	public boolean isExitByName(String userName) {
-		// TODO Auto-generated method stub
-		Session sess = sessionFactory.openSession();
+		System.out.println("执行");
+		Session sess = getSession();
 //        Transaction tx = sess.beginTransaction();
         String sql="select * from userinfo where userName=?";
         SQLQuery query = sess.createSQLQuery(sql);
@@ -53,15 +68,12 @@ public class UserDaoImpl  implements UserDao{
         sess.close();
         if(user.size()>0){  
             try {  
-            	sess.close();  
                 return true;  
             } catch (Exception e) {
-            	 sess.close(); 
                  e.printStackTrace();  
                  
             }        
         }else{
-        	sess.close();
         	return false;
         }
         return false;
@@ -129,11 +141,4 @@ public class UserDaoImpl  implements UserDao{
 		return nickname;
 	}
 	
-	public SessionFactory getSessionFactory() {
-        return sessionFactory;
-	}
-
-	public void setSessionFactory(SessionFactory sessionFactory) {
-        this.sessionFactory = sessionFactory;
-	}
 }

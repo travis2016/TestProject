@@ -2,7 +2,10 @@ package com.szc.users.service.Impl;
 
 import java.util.List;
 
+import javax.annotation.Resource;
+
 import org.springframework.stereotype.Service;
+import org.springframework.transaction.annotation.Transactional;
 
 import com.szc.users.beans.UserBean;
 import com.szc.users.dao.Impl.UserDaoImpl;
@@ -16,17 +19,19 @@ import com.szc.users.service.UserService;
 
 @Service("UserService")
 public class UserServiceImpl implements UserService {
-
+	
+	@Resource
 	private UserDaoImpl usersdao;
+	
 	@Override
 	public UserBean save(UserBean user) {
 			
 		return usersdao.addUser(user);
 	}
 	
-	@Override
 	public boolean isExitUser(String userName) {
-		return usersdao.isExitByName(userName);
+		boolean juderesult = usersdao.isExitByName(userName);
+		return juderesult;
 	}
 	
 	@Override

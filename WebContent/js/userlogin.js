@@ -50,10 +50,11 @@ function checkUserExit(){
 	$.ajax({
         type : "POST",
         url : "regist/judgeUserExitAction",
-        data : "user.userName="+(textusername.value),
+        data : "userName="+(textusername.value),
         async:false,
         cache:false,
-        success : function(msg) {          
+        success : function(msg) { 
+        	console.log("返回信息了");
             if(msg=="true"){
             	alert("用户已存在"); 
             	result=false;

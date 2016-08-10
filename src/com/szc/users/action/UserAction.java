@@ -15,6 +15,7 @@ import org.apache.struts2.ServletActionContext;
 import org.apache.struts2.convention.annotation.Action;
 import org.apache.struts2.convention.annotation.InterceptorRef;
 import org.apache.struts2.convention.annotation.ParentPackage;
+import org.springframework.context.annotation.Scope;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.context.WebApplicationContext;
 import org.springframework.web.context.support.WebApplicationContextUtils;
@@ -29,6 +30,7 @@ import com.szc.users.service.UserService;
  * UserAction负责处理用户表的一些操作
  */
 @Controller("UserAction")
+@Scope("prototype")
 @ParentPackage(value="test") 
 public class UserAction  extends ActionSupport {
     

@@ -2,6 +2,8 @@ package com.szc.users.dao;
 
 import java.util.List;
 
+import org.springframework.stereotype.Repository;
+
 import com.szc.users.beans.UserBean;
 
 
@@ -12,7 +14,7 @@ import com.szc.users.beans.UserBean;
  * dao处理数据逻辑
  */
 
-
+@Repository("usersdao")
 public interface UserDao {
 
 	

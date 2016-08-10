@@ -1,5 +1,21 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <beans xmlns="http://www.springframework.org/schema/beans"
+      xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+      xmlns:aop="http://www.springframework.org/schema/aop"
+      xmlns:tx="http://www.springframework.org/schema/tx" 
+      xmlns:context="http://www.springframework.org/schema/context"
+      xmlns:task="http://www.springframework.org/schema/task"
+      xsi:schemaLocation="http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans-4.0.xsd
+      http://www.springframework.org/schema/aop http://www.springframework.org/schema/aop/spring-aop-4.0.xsd
+      http://www.springframework.org/schema/tx http://www.springframework.org/schema/tx/spring-tx-4.0.xsd
+      http://www.springframework.org/schema/context http://www.springframework.org/schema/context/spring-context-4.0.xsd
+      http://www.springframework.org/schema/task http://www.springframework.org/schema/task/spring-task-4.0.xsd">  
+
+   <!-- 扫描base-package下的文件，并注册bean，同时激活已注册的bean，就是扫描那些用@Service,@component,@Repositiry标识的那些类 -->  
+   <context:component-scan base-package="com.szc" />  
+</beans>  
+
+<!-- <beans xmlns="http://www.springframework.org/schema/beans"
         xmlns:dwr="http://www.directwebremoting.org/schema/spring-dwr"
         xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
         xsi:schemaLocation="http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans.xsd
@@ -30,7 +46,7 @@
             </props>  
         </property> 
         
-        <!-- 包扫描的方式加载注解类(推荐) -->  
+        包扫描的方式加载注解类(推荐)  
         <property name="packagesToScan">  
             <list>  
                 <value>com.szc.users.*</value>
@@ -50,11 +66,11 @@
                 </property> 
         </bean>
        
-       <!-- <bean id="userBean" class="com.szc.users.beans.UserBean">
+       <bean id="userBean" class="com.szc.users.beans.UserBean">
             <property name="sessionFactory">
                 <ref bean="sessionFactory"/>
             </property>
-        </bean> -->
+        </bean>
        
         <bean id="usersdao" class="com.szc.users.dao.Impl.UserDaoImpl">
             <property name="sessionFactory">
@@ -66,4 +82,4 @@
                 <property name="usersdao" ref="usersdao"></property>
         </bean>
         
-</beans>
+</beans> -->
