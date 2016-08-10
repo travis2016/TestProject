@@ -65,10 +65,6 @@ public class RegisterAction extends ActionSupport {
 		this.userService = userService;
 	}
 
-	//	@Action(value = "/regAction",
-//			results = {  
-//	        @Result(name = "success", location ="/RegisterSuccess.jsp"),  
-//	        @Result(name = "error", location ="/Fail.jsp") })
 	@Action(value = "/regAction")//ajax的方法，返回的Type必须是json
 	public void registUser() {  
         try {  
@@ -79,30 +75,18 @@ public class RegisterAction extends ActionSupport {
 //        	System.out.println(paramJson.getString("nickname"));
         	UserBean registerUser=new UserBean(paramJson.getString("username"),MD5Util.string2MD5(paramJson.getString("password"))
         						,Integer.parseInt(paramJson.getString("gender")), java.net.URLDecoder.decode(paramJson.getString("nickname"),"UTF-8"),3);
-        	UserService server = ctx.getBean("services",com.szc.users.service.Impl.UserServiceImpl.class);
-        	server.save(registerUser);	// register user 
+        	userService.save(registerUser);	// register user 
             out = response.getWriter();
             String resultString = "{\"status\":1}";
             JSONObject resultJson = new JSONObject(resultString); 
             System.out.println(resultJson);
             out.println(resultJson);
-//             return SUCCESS;  
   
         } catch (Exception e) {  
             e.printStackTrace();  
-//            return ERROR;  
         } 
     }       
-     // System.out.println(jsonString);
-//     	System.out.println("user: " + user.getUserName() + "\n" + "pwd: " + user.getPassword()+"\n"+"nickname:"+user.getNickname());
-//    	 boolean judgeExit=server.isExitUser(user.getUserName());
-//    	 if(judgeExit==false){server.save(registerUser);	// register user
-//    	 }else{
-//		 return ERROR;
-//	 }
 
-	
-	
 	/**
 	 * 判断用户是否存在。用户存在，则返回true，用户不存在，则返回false
 	 */
@@ -111,10 +95,7 @@ public class RegisterAction extends ActionSupport {
 		try {
 			System.out.println("判断用户是否已注册");
 			UserBean user = new UserBean(request.getParameter("userName"));
-			
 			PrintWriter out=null;
-//			UserService server = userService.isExitUser(user.getUserName());
-//			System.out.println(user.getUserName());
 			System.out.println("username="+user.getUserName());
 			boolean judgeExit=userService.isExitUser(user.getUserName());
 			out = response.getWriter();

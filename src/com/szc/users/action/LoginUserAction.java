@@ -2,6 +2,7 @@ package com.szc.users.action;
 
 import java.io.PrintWriter;
 
+import javax.annotation.Resource;
 import javax.servlet.ServletContext;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
@@ -9,6 +10,7 @@ import javax.servlet.http.HttpServletResponse;
 import org.apache.commons.io.IOUtils;
 import org.apache.struts2.ServletActionContext;
 import org.apache.struts2.convention.annotation.Action;
+import org.apache.struts2.convention.annotation.Namespace;
 import org.apache.struts2.convention.annotation.Result;
 import org.json.JSONObject;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -20,6 +22,7 @@ import org.springframework.web.context.support.WebApplicationContextUtils;
 import com.opensymphony.xwork2.ActionSupport;
 import com.szc.users.beans.UserBean;
 import com.szc.users.service.UserService;
+import com.szc.users.service.Impl.UserServiceImpl;
 import com.szc.util.MD5Util;
 
 /**
@@ -28,35 +31,28 @@ import com.szc.util.MD5Util;
  * 处理登录后的用户的Action(修改用户信息、管理员查询用户)
  */
 @Controller("LoginUserAction")
+@Namespace("/logins")
 @Scope("prototype")
 public class LoginUserAction extends ActionSupport {
 	private static final long serialVersionUID = 1L;
-	private UserService userService;  
+	
+	@Resource(name ="UserService")
+    private UserServiceImpl userService;   
 	  
-    public UserBean user;  //User用户	
 	private HttpServletRequest request;
   	private HttpServletResponse response;
   	private ServletContext Context;
   	private WebApplicationContext ctx;
   	
-  	public UserService getUserService() {
+    @Autowired
+	public void setUserService(UserServiceImpl userService) {
+		this.userService = userService;
+	}
+    
+    public UserServiceImpl getUserService() {
 		return userService;
 	}
 
-    @Autowired
-	public void setUserService(UserService userService) {
-		this.userService = userService;
-	}
-
-	public UserBean getUser() {
-		return user;
-	}
-
-	@Autowired
-	public void setUser(UserBean user) {
-		this.user = user;
-	}
-  	
 	public LoginUserAction() {
 		request = ServletActionContext.getRequest();
 		response = ServletActionContext.getResponse();
@@ -65,10 +61,6 @@ public class LoginUserAction extends ActionSupport {
 		ctx=WebApplicationContextUtils.getRequiredWebApplicationContext(Context);
 	}
 	
-//	@Action(value = "/loginAction",
-//			results = {  
-//	        @Result(name = "success", location ="/userMain.jsp"),
-//	        @Result(name = "ERROR", location ="/Fail.jsp")})
 	@Action(value = "/loginAction")
 	public void login(){
 		PrintWriter out=null;
@@ -77,13 +69,12 @@ public class LoginUserAction extends ActionSupport {
 			String jsonString = IOUtils.toString(request.getInputStream());
 			System.out.println("用户参数：==============="+jsonString);
         	JSONObject paramJson = new JSONObject(jsonString); 
-			UserService server = ctx.getBean("services",com.szc.users.service.Impl.UserServiceImpl.class);
 			UserBean loginrUser=new UserBean(paramJson.getString("username"),MD5Util.string2MD5(paramJson.getString("password")));
 			out = response.getWriter();			
-			boolean results=server.userLogin(loginrUser.getUserName(), loginrUser.getPassword());
+			boolean results=userService.userLogin(loginrUser.getUserName(), loginrUser.getPassword());
 			System.out.println("返回结果："+results);
 			if(results==true){
-				String nicknames=server.searchUserNickname(loginrUser.getUserName());
+				String nicknames=userService.searchUserNickname(loginrUser.getUserName());
 				System.out.println(nicknames);
 				request.getSession().setAttribute("loginusername",nicknames);				
 				resultjson.append("status", 1);

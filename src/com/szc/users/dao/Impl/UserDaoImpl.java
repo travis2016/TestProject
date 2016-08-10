@@ -40,7 +40,7 @@ public class UserDaoImpl implements UserDao{
 	 */
 	public UserBean addUser(UserBean user) {
 		try{
-            Session sess = sessionFactory.openSession();
+            Session sess = getSession();
             Transaction tx = sess.beginTransaction();
 //            System.out.println("nickname"+user.getNickname());
             sess.save(user);
@@ -84,7 +84,7 @@ public class UserDaoImpl implements UserDao{
 	 * 判断用户是否登录成功
 	 */
 	public boolean selectUser(String userName, String Password) {
-		Session sess = sessionFactory.openSession();
+		Session sess = getSession();
 //        Transaction tx = sess.beginTransaction();
         String sql="select * from userinfo where userName=? and password = ?";
         SQLQuery query = sess.createSQLQuery(sql);
@@ -94,14 +94,12 @@ public class UserDaoImpl implements UserDao{
         sess.close();
         if(user.size()>0){  
             try {  
-            	sess.close();  
                 return true;  
             } catch (Exception e) {  
                 e.printStackTrace();  
             }  
              
         }else{  
-	        sess.close();  
 	        return false; 
         }
         return false;
@@ -112,7 +110,7 @@ public class UserDaoImpl implements UserDao{
 	 * 查询用户列表
 	 */
 	public List selectUser(){
-		Session sess = sessionFactory.openSession();
+		Session sess = getSession();
 		String sql="select userName,gender,nickname,groupid from userinfo";
 		SQLQuery query = sess.createSQLQuery(sql);
         List userlist = query.list(); 
@@ -121,13 +119,12 @@ public class UserDaoImpl implements UserDao{
 	}
 	
 	public String SearchNickname(String userName){
-		Session sess = sessionFactory.openSession();
+		Session sess = getSession();
         Transaction tx = sess.beginTransaction();
         String sql="select nickname from userinfo where userName=?";
         SQLQuery query = sess.createSQLQuery(sql);
         query.setParameter(0,userName);
         List user = query.list(); 
-        sess.close();
         String nickname="";
         if(user.size()>0){  
             try {  
