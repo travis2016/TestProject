@@ -19,19 +19,22 @@ public class AuthInterceptor implements Interceptor{
 
 	@Override
 	public String intercept(ActionInvocation invocation) throws Exception {
-		String result = "";  
-        ActionContext ctx = invocation.getInvocationContext();
-        //获取拦截的Action名称
-        String invocationAction=invocation.getAction().getClass().getName();
-        String invocationname= invocationAction.substring(invocationAction.lastIndexOf(".")+1,invocationAction.length());
-        System.out.println("invocationAction=="+invocationAction);
-        Map session = ctx.getSession();
-		System.out.println("执行拦截器");
-		
-		if(invocationname=="RegisterAction" || invocationname=="LoginUserAction"){
-			result="true";
+		String result = "";
+		Map<String, Object> session = invocation.getInvocationContext().getContext().getSession();
+		if(session.get("user")!=null){
+			System.out.println("有权限"+session.get("user"));
+			return invocation.invoke();
 		}
-		return "false";
+		System.out.println("执行这里");
+		ActionContext.getContext().put("message", "您无权执行该操作！");
+		return "faile";
+		
+//        ActionContext ctx = invocation.getInvocationContext();
+//        //获取拦截的Action名称
+//        String invocationAction=invocation.getAction().getClass().getName();
+//        String invocationname= invocationAction.substring(invocationAction.lastIndexOf(".")+1,invocationAction.length());
+//        System.out.println("invocationAction=="+invocationAction);
+//        Map session = ctx.getSession();
 	}
 
 	@Override

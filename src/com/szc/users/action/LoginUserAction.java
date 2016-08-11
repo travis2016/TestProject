@@ -11,7 +11,6 @@ import org.apache.commons.io.IOUtils;
 import org.apache.struts2.ServletActionContext;
 import org.apache.struts2.convention.annotation.Action;
 import org.apache.struts2.convention.annotation.Namespace;
-import org.apache.struts2.convention.annotation.Result;
 import org.json.JSONObject;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.annotation.Scope;
@@ -19,9 +18,9 @@ import org.springframework.stereotype.Controller;
 import org.springframework.web.context.WebApplicationContext;
 import org.springframework.web.context.support.WebApplicationContextUtils;
 
+import com.opensymphony.xwork2.ActionContext;
 import com.opensymphony.xwork2.ActionSupport;
 import com.szc.users.beans.UserBean;
-import com.szc.users.service.UserService;
 import com.szc.users.service.Impl.UserServiceImpl;
 import com.szc.util.MD5Util;
 
@@ -76,7 +75,8 @@ public class LoginUserAction extends ActionSupport {
 			if(results==true){
 				String nicknames=userService.searchUserNickname(loginrUser.getUserName());
 				System.out.println(nicknames);
-				request.getSession().setAttribute("loginusername",nicknames);				
+				ActionContext.getContext().getSession().put("user",loginrUser);
+				ActionContext.getContext().getSession().put("loginusername",nicknames);
 				resultjson.append("status", 1);
 				resultjson.append("nickname", nicknames);
 				out.write(resultjson.toString());

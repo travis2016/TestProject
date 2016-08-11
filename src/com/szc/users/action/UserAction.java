@@ -15,6 +15,8 @@ import org.apache.struts2.ServletActionContext;
 import org.apache.struts2.convention.annotation.Action;
 import org.apache.struts2.convention.annotation.InterceptorRef;
 import org.apache.struts2.convention.annotation.ParentPackage;
+import org.apache.struts2.convention.annotation.Result;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.annotation.Scope;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.context.WebApplicationContext;
@@ -23,6 +25,7 @@ import org.springframework.web.context.support.WebApplicationContextUtils;
 import com.opensymphony.xwork2.ActionSupport;
 import com.szc.users.beans.UserBean;
 import com.szc.users.service.UserService;
+import com.szc.users.service.Impl.UserServiceImpl;
 
 /**
  * 
@@ -40,7 +43,17 @@ public class UserAction  extends ActionSupport {
   	private ServletContext Context;
   	private WebApplicationContext ctx;
   	private PrintWriter out;
-  	 
+  	
+  	private UserServiceImpl userService; 
+  	
+  	 @Autowired
+ 	public void setUserService(UserServiceImpl userService) {
+ 		this.userService = userService;
+ 	}
+     
+     public UserServiceImpl getUserService() {
+ 		return userService;
+ 	}
     
   	public UserAction() {
 		request = ServletActionContext.getRequest();
@@ -52,15 +65,14 @@ public class UserAction  extends ActionSupport {
   	}
   	
   	
-	
+	//查询用户的数据
 	@Action(value = "/selectAction"
 			,interceptorRefs= {@InterceptorRef(value="checkLoginStack")}) 	//ajax的方法，返回的Type必须是json
 	public void selectUser() {
 		try {
 			out= response.getWriter();
 			UserBean selectUser=new UserBean();
-			UserService server = ctx.getBean("services",com.szc.users.service.Impl.UserServiceImpl.class);
-	    	List userList=server.searchUser();
+	    	List userList=userService.searchUser();
 	    	/*
 	    	Object[] user1=(Object[])userList.get(0);
 	    	JSONArray selectResult = JSONArray.fromObject(userList);
