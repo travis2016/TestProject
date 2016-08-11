@@ -14,6 +14,7 @@ import net.sf.json.JSONObject;
 import org.apache.struts2.ServletActionContext;
 import org.apache.struts2.convention.annotation.Action;
 import org.apache.struts2.convention.annotation.InterceptorRef;
+import org.apache.struts2.convention.annotation.Namespace;
 import org.apache.struts2.convention.annotation.ParentPackage;
 import org.apache.struts2.convention.annotation.Result;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -23,6 +24,7 @@ import org.springframework.web.context.WebApplicationContext;
 import org.springframework.web.context.support.WebApplicationContextUtils;
 
 import com.opensymphony.xwork2.ActionSupport;
+import com.sun.net.httpserver.Authenticator.Failure;
 import com.szc.users.beans.UserBean;
 import com.szc.users.service.UserService;
 import com.szc.users.service.Impl.UserServiceImpl;
@@ -34,7 +36,8 @@ import com.szc.users.service.Impl.UserServiceImpl;
  */
 @Controller("UserAction")
 @Scope("prototype")
-@ParentPackage(value="test") 
+@Namespace("/")
+//@ParentPackage(value="test") 
 public class UserAction  extends ActionSupport {
     
 	private static final long serialVersionUID = 1L;  
@@ -67,7 +70,10 @@ public class UserAction  extends ActionSupport {
   	
 	//查询用户的数据
 	@Action(value = "/selectAction"
-			,interceptorRefs= {@InterceptorRef(value="checkLoginStack")}) 	//ajax的方法，返回的Type必须是json
+			,results = { @Result(name = "add", location = "/login.jsp")}) 	
+	/*//ajax的方法，返回的Type必须是json
+	 ,results = { @Result(name = "add", location = "/login.jsp")}
+	,interceptorRefs= {@InterceptorRef(value="checkLoginStack")}*/
 	public void selectUser() {
 		try {
 			out= response.getWriter();

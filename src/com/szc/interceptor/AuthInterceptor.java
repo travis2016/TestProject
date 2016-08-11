@@ -27,7 +27,7 @@ public class AuthInterceptor implements Interceptor{
 		}
 		System.out.println("执行这里");
 		ActionContext.getContext().put("message", "您无权执行该操作！");
-		return "faile";
+		return "ERROR";
 		
 //        ActionContext ctx = invocation.getInvocationContext();
 //        //获取拦截的Action名称
