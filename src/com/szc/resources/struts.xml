@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="UTF-8" ?>  
-<!DOCTYPE struts PUBLIC
-"-//Apache Software Foundation//DTD Struts Configuration 2.3//EN"
-"http://struts.apache.org/dtds/struts-2.3.dtd  ">
+<!DOCTYPE struts PUBLIC  
+    "-//Apache Software Foundation//DTD Struts Configuration 2.0//EN"  
+    "http://struts.apache.org/dtds/struts-2.0.dtd">
     
 <struts>  
 	<!-- 国际化设置，请求参数为utf-8编码 --> 
@@ -12,7 +12,7 @@
     <!-- 指定由spring负责action对象的创建 -->  
     <constant name="struts.objectFactory" value="spring"/> 
   
-	<package  name="test">
+	<package  name="test" extends="struts-default">
  		<!-- 将拦截器在全局包中定义，在需要用到的包中指明引用 -->    
         <interceptors>    
             <interceptor name="authority" class="com.szc.interceptor.AuthInterceptor"/>    

@@ -15,7 +15,7 @@
          <!-- 使用struts.xml时的配置，注解后，基本可以去掉 -->
            <init-param>
         	<param-name>config</param-name>
-        	<param-value>/com/szc/resources/struts.xml,struts-default.xml,struts-plugin.xml</param-value>
+        	<param-value>struts-default.xml,struts-plugin.xml,/com/szc/resources/struts.xml</param-value>
         </init-param> 
     </filter>
     

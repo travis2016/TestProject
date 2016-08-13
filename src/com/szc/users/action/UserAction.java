@@ -37,7 +37,7 @@ import com.szc.users.service.Impl.UserServiceImpl;
 @Controller("UserAction")
 @Scope("prototype")
 @Namespace("/")
-//@ParentPackage(value="test") 
+@ParentPackage(value="test") 
 public class UserAction  extends ActionSupport {
     
 	private static final long serialVersionUID = 1L;  
@@ -70,7 +70,8 @@ public class UserAction  extends ActionSupport {
   	
 	//查询用户的数据
 	@Action(value = "/selectAction"
-			,results = { @Result(name = "add", location = "/login.jsp")}) 	
+			,results = { @Result(name = "add", location = "/login.jsp")}
+			,interceptorRefs= {@InterceptorRef(value="checkLoginStack")}) 	
 	/*//ajax的方法，返回的Type必须是json
 	 ,results = { @Result(name = "add", location = "/login.jsp")}
 	,interceptorRefs= {@InterceptorRef(value="checkLoginStack")}*/
