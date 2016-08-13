@@ -16,6 +16,6 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
   <meta http-equiv="description" content="This is my page">
  </head>
  <body>
- 注册失败
+ 注册失败test
  </body>
 </html>
