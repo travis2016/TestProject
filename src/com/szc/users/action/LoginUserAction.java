@@ -6,6 +6,7 @@ import javax.annotation.Resource;
 import javax.servlet.ServletContext;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
+import javax.servlet.http.HttpSession;
 
 import org.apache.commons.io.IOUtils;
 import org.apache.struts2.ServletActionContext;
@@ -75,8 +76,11 @@ public class LoginUserAction extends ActionSupport {
 			if(results==true){
 				String nicknames=userService.searchUserNickname(loginrUser.getUserName());
 				System.out.println(nicknames);
-				ActionContext.getContext().getSession().put("user",loginrUser);
-				ActionContext.getContext().getSession().put("loginusername",nicknames);
+				//从已经建好的Session中取数据，如果没有Session则自动创建  
+                HttpSession session=request.getSession(true); 
+                session.setAttribute("loginusername",nicknames);
+//				ActionContext.getContext().getSession().put("user",loginrUser);
+//				ActionContext.getContext().getSession().put("loginusername",nicknames);
 				resultjson.append("status", 1);
 				resultjson.append("nickname", nicknames);
 				out.write(resultjson.toString());

@@ -5,6 +5,16 @@
 String path = request.getContextPath();
 String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.getServerPort()+path+"/";
 String uname=(String)request.getSession().getAttribute("loginusername");
+	if(uname==null)
+	{
+		System.out.println("here");
+%>
+	<script>
+    	alert('尊敬的游客，由于您未登录，所以无法使用该平台，谢谢合作！');
+    	window.location.href = '<%=basePath%>' + 'login.jsp';
+    </script>
+<% 
+	}
 %>
 <!DOCTYPE html>
 <html>
