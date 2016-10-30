@@ -10,7 +10,7 @@ String uname=(String)request.getSession().getAttribute("loginusername");
 <html>
 <head>
 <title>主页面</title>
-	 <base href="<%=basePath%>">    
+	  <%-- <base href="<%=basePath%>">    
 	  <meta http-equiv="pragma" content="no-cache">
 	  <meta http-equiv="cache-control" content="no-cache">
 	  <meta http-equiv="expires" content="0">    
@@ -21,7 +21,7 @@ String uname=(String)request.getSession().getAttribute("loginusername");
       <script type="text/javascript" src="js/jquery-1.12.3.min.js"></script>
       <script  src="js/bootstrap.min.js"></script>
       <script type="text/javascript" src="js/metisMenu/metisMenu.min.js"></script> 
-      <script type="text/javascript" src="js/mainJs/main.js"></script> 
+      <script type="text/javascript" src="js/mainJs/main.js"></script> --%>
      <!--  <script type="text/javascript">
       	$(document).ready(function(){ 
 				document.getElementById("pageIframe").scrolling="hidden";
@@ -29,7 +29,7 @@ String uname=(String)request.getSession().getAttribute("loginusername");
 	  </script> -->
 </head>
 <body>
-	 <jsp:include page="/page/Main.jsp"></jsp:include>
+	 <jsp:include page="/page/Main2.jsp"></jsp:include>
 	 
 </body>
 </html>
