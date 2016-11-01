@@ -13,6 +13,21 @@ String uname=(String)request.getSession().getAttribute("loginusername");
 	  <meta http-equiv="pragma" content="no-cache">
 	  <meta http-equiv="cache-control" content="no-cache">
 	  <meta http-equiv="expires" content="0"> 
+	  <script>
+		window.onload=
+		function(){
+			var linkList=window.parent.document.getElementsByTagName("link");//获取父窗口link标签对象列表
+			var head=document.getElementsByTagName("head").item(0);
+			//外联样式
+			for(var i=0;i<linkList.length;i++){
+				var l=document.createElement("link");
+				l.rel = 'stylesheet'
+				l.type = 'text/css'; 
+				l.href=linkList[i].href;
+				head.appendChild(l);
+			}
+		}
+	</script>
 <body>
 		<div id="maintop">
 		 <nav class="navbar navbar-default navbar-static-top" role="navigation" style="margin-bottom: 0">
