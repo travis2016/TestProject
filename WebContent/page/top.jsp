@@ -13,6 +13,10 @@ String uname=(String)request.getSession().getAttribute("loginusername");
 	  <meta http-equiv="pragma" content="no-cache">
 	  <meta http-equiv="cache-control" content="no-cache">
 	  <meta http-equiv="expires" content="0">    
+	  <script type="text/javascript" src="../js/jquery-1.12.3.min.js"></script>
+      <script type="text/javascript" src="../js/bootstrap.min.js"></script>
+      <script type="text/javascript" src="../js/metisMenu/metisMenu.min.js"></script> 
+      <script type="text/javascript" src="../js/mainJs/main.js"></script>
       <script>
 		window.onload=
 		function(){
@@ -27,10 +31,14 @@ String uname=(String)request.getSession().getAttribute("loginusername");
 				head.appendChild(l);
 			}
 		}
+		
+		function exitSystem(){
+			top.location.href="<%=basePath %>login.jsp";
+		}
 	</script>
 </head>
-<body>
-	<div id="maintop">
+<body id="topBody">
+	<div>
 		<nav class="navbar navbar-default navbar-static-top" role="navigation" style="margin-bottom: 0">
             <div class="navbar-header">
                <a class="navbar-brand" href="javascript:void(0)">Stress Main</a>
@@ -49,7 +57,7 @@ String uname=(String)request.getSession().getAttribute("loginusername");
                        </a>
                        </li>
                        <li>
-						 <a href="<%=basePath %>login.jsp" target="_parent">                       
+						 <a href="<%=basePath %>login.jsp" onclick="exitSystem()">                       
 	                          <i class="fa fa-sign-in fa-fw"></i>
 	                         <i>退出系统</i>
 	                     </a>

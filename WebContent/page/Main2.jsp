@@ -24,43 +24,24 @@ String uname=(String)request.getSession().getAttribute("loginusername");
 	  <meta http-equiv="pragma" content="no-cache">
 	  <meta http-equiv="cache-control" content="no-cache">
 	  <meta http-equiv="expires" content="0"> 
+	  <link rel="stylesheet" href="css/Mycss/Main.css">
 	  <link rel="stylesheet" href="css/bootstrap.min.css">
       <link rel="stylesheet" href="css/metisMenu/metisMenu.min.css">
       <link rel="stylesheet" href="font-awesome/css/font-awesome.min.css" type="text/css">
       <link rel="stylesheet" href="css/style.css">
       <script type="text/javascript" src="js/jquery-1.12.3.min.js"></script>
-      <script  src="js/bootstrap.min.js"></script>
+      <script type="text/javascript" src="js/bootstrap.min.js"></script>
       <script type="text/javascript" src="js/metisMenu/metisMenu.min.js"></script> 
       <script type="text/javascript" src="js/mainJs/main.js"></script>  
-	  <script type="text/javascript" language="javascript">   
-			function iFrameHeight() {   
-				var ifm= document.getElementById("iframepage");   
-				var subWeb = document.frames ? document.frames["iframepage"].document : ifm.contentDocument;   
-				if(ifm != null && subWeb != null) {
-		  		 ifm.height = subWeb.body.scrollHeight;
-				}   
-			} 
-			
-			function reinitIframeEND(){  
-				var iframe = document.getElementById("pageIframe");  
-				try{  
-				    var bHeight = iframe.contentWindow.document.body.scrollHeight;  
-				    var dHeight = iframe.contentWindow.document.documentElement.scrollHeight;  
-				    var height = Math.max(bHeight, dHeight);  
-				    iframe.height = height;  
-				}catch (ex){}  
-				// 停止定时  
-				window.clearInterval(timer1);  
-			}
-		</script> 
+	  
 </head>
 <body>
-	<div style="padding:0px">
-		<iframe src="<%=basePath%>/page/top.jsp"  id="iframetop" name=""iframetop"" frameborder="0" scrolling="no" width="100%" onLoad="iFrameHeight()"></iframe>
+	<div id="mainTopdiv" name="mainTopdiv">
+		<iframe src="<%=basePath%>/page/top.jsp"  id="iframetop" name="iframetop" frameborder="0" scrolling="no" width="100%"></iframe>
 	</div>
 	<div style="padding:0px">
 	  <div style="float:left">
-		<iframe src="<%=basePath%>/page/left.jsp"  id="iframeleft" name=""iframetop"" frameborder="0" scrolling="no" width="20%"></iframe>
+		<iframe src="<%=basePath%>/page/left.jsp"  id="iframeleft" name="iframeleft" frameborder="0" scrolling="no" width="20%"></iframe>
 	  </div>
 	  <div style="float:right">
 		<iframe class="pageframe" id="pageIframe" name="pageIframe" width="100%" onLoad="reinitIframeEND();"/>
