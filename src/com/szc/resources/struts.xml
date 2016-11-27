@@ -15,7 +15,7 @@
 	<package  name="test" extends="struts-default">
  		<!-- 将拦截器在全局包中定义，在需要用到的包中指明引用 -->    
         <interceptors>    
-            <interceptor name="authority" class="com.szc.interceptor.AuthInterceptor"/>    
+            <interceptor name="authority" class="com.AuthInterceptor"/>
               <!-- 拦截器栈 -->    
             <interceptor-stack name="checkLoginStack">    
                 <interceptor-ref name="authority"/>    
