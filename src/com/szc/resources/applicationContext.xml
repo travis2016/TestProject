@@ -66,19 +66,19 @@
                 </property> 
         </bean>
        
-       <bean id="userBean" class="com.UserBean">
+        <bean id="userBean" class="com.szc.users.beans.UserBean">
             <property name="sessionFactory">
                 <ref bean="sessionFactory"/>
             </property>
         </bean>
-       
-        <bean id="usersdao" class="com.UserDaoImpl">
+
+        <bean id="usersdao" class="com.szc.users.dao.Impl.UserDaoImpl">
             <property name="sessionFactory">
                 <ref bean="sessionFactory"/>
             </property>
         </bean>
-       
-        <bean id="services" class="com.UserServiceImpl">
+
+        <bean id="services" class="com.szc.users.service.Impl.UserServiceImpl">
                 <property name="usersdao" ref="usersdao"></property>
         </bean>
         
